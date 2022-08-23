@@ -1,0 +1,29 @@
+﻿// Declaração de variáveis
+int quantidade;
+
+// Atribuição de valor
+quantidade = 10;
+
+// Declaração com atribuição
+int totalDeParticipantes = 50;
+
+// Tipo string ideal para dados literários e frases
+string fraseDeUmLivro = "Ser ou naão ser, eis a questão";
+
+// Tipo float pode armazenar um valor de ponto flutuante com precisão de até 7 digitos.
+float valorFloat = 100.0f;
+
+// Tipo double pode armazenar um valor de ponto flutuante com precisão de até 15 digitos.
+double valorDouble = 100.0d;
+
+// Tipo decimal que pode armazenar um valor de ponto flutuante com precisão de até 29 digitos.
+decimal valorDecimal = 100.0M;
+
+// Tipo char que pode armazenar um unico caractere.
+char letra = 'T';
+
+// Tipo implicito como string.
+var curso = "Trybe - Aceleração c#";
+
+// Tipo implicito com decimal.
+var media = 6.53M;
