@@ -285,6 +285,15 @@ Note que para esta nova implementação foi utilizado o comando new que aciona o
 Outra possibilidade permitida ao se utilizar struct é a capacidade de atribuir uma struct completa já inicializada para outra, veja a seguir:
 ```
 //Criando uma struct
+
+//Incializando uma struct com construtor
+Schedule now = new Schedule(10,30,0,"AM");
+Console.WriteLine("Horario: "+now.getSchedule());
+
+//atribuindo uma struct iniciada para uma nova struct
+Schedule now2 = now;
+Console.WriteLine("Horario2: "+now2.getSchedule());
+
 struct Schedule
 {
     private int hour, minute, second;
@@ -305,11 +314,180 @@ struct Schedule
     }
 }
 
-//Incializando uma struct com construtor
-Schedule now = new Schedule(10,30,0,"AM");
-Console.WriteLine("Horario: "+now.getSchedule());
+```
 
-//atribuindo uma struct iniciada para uma nova struct
-Schedule now2 = now;
-Console.WriteLine("Horario2: "+now2.getSchedule());
+<h2>Outros tipos de dados que representam números inteiros</h2>
+
+Dependendo de alguns requisitos principalmente relacionados ao uso de memória, podemos escolher outros tipos numericos no C#.
+
+Para termos um controle mais preciso, podemos utilizar tipos signed que permitem o armazenamento de valores negativos e os unsigned cujo os valores podem ser somente o 0 e valores positivos.
+
+Veja a seguir uma tabela com todos os tipos signed e unsigned do C#.
+
+Tipo	 | Tamanho	         |     Valor mínimo	    | Valor máximo
+-------|-------------------|----------------------|---------
+sbyte	 | 8-bit(signed)	   |    -128	            |127
+byte	 | 8-bit (unsigned)	 |    0                 |	255
+short	 | 16-bit (signed)   |	-32768              |	32767
+ushort |16-bit (unsigned)  |	0	                  | 65535
+int	   |  32-bit (signed)	 | -2147483648	        | 2147483647
+uint	 |  32-bit (unsigned)|	0	                  | 4294967295
+long	 |  64-bit (signed)	 | -9223372036854775808	| 9223372036854775807
+ulong	 |  64-bit (unsigned)| 0	                  | 18446744073709551615
+
+<h2>Constantes</h2>
+
+Com um nome bem sugestivo, uma constante é um valor que não pode ser alterado ao decorrer do tempo de execução fazendo o oposto a uma variável.
+
+No C#, utilizamos a palavra reservada const para declarar uma constante antes do seu tipo. O processo de declarar, acessar e utilizar a constante é semelhante ao de se trabalhar com variáveis, entretanto, ao se declarar e definir o valor de uma constante não é possível alterar seu valor em nenhuma outra linha.
+
+```
+//Como declarar uma constante
+const string url = "https://www.betrybe.com/";
+const int numberOfAttemptsAllowed = 5;
+```
+
+<h2>Variáveis com tipo implícito</h2>
+
+O C# traz a possibilidade de implicitamente definir um tipo de dado para uma variável quando se declara utilizando a palavra reservada var. Com essa instrução, o compilador vai deduzir o tipo a partir da expressão ou dado que está sendo atribuído a ela, podendo assim ser qualquer tipo primitivo ou definidos pela pessoa que desenvolve o programa. 
+
+```
+  //esta variável será compilada como string
+var school = "Trybe";
+
+//esta variável será compilada como int
+var semester = 1;
+
+//esta variável será compilada como um tipo anônimo
+var student = new { name = "Jorge", age = 30 };
+
+Console.WriteLine("Olá! Me chamo " + student.name + " " +
+                  "sou um estudante da escola " + school + " " +
+                  "estou no " + semester + "º semestre " +
+                  "e tenho " + student.age + " anos"); 
+```
+
+⚠️ Aviso: Ao implicitamente definir um tipo de dado com uso do var, não é possível trocar este tipo. Caso aconteça, o compilador irá acusar um erro.
+
+Outro benefício de se utilizar a declaração implícita é quando existe uma Classe com o nome muito extenso podendo ser substituída ao definir o tipo da variável por var, veja neste exemplo:
+
+```
+ClassWithAnExtremelyLongName obj1 = new ClassWithAnExtremelyLongName();
+
+//codigo mais curto e mais legível
+var obj2 = new ClassWithAnExtremelyLongName();
+```
+
+Além disso, existem algumas regras que devem ser adotadas para o uso de variáveis implícitas:
+
+1. Uma variável com tipo implícito só pode ser utilizada e inicializada no mesmo trecho em que ela existe.
+2. Não se pode declarar uma variável implícita como null.
+3. Variáveis implícitas não podem ser atributos de Classes.
+4. Não se pode inicializar múltiplas variáveis implícitas numa mesma instrução.
+
+<h2>Operações Aritméticas</h2>
+
+Para processamentos que envolvam cálculos matemáticos é importante conhecermos os operadores aritméticos e como trabalhar com eles.
+
+Operador | Descrição                 |
+---------|---------------------------|
+(+)	       | Adição                    |
+(-)	       | Subtração                 |
+(*)	       | Multiplicação             |
+(/)	       | Divisão                   |
+(%)	       | Módulo (resto da divisão) |
+
+Utilizando estes operadores entre variáveis.
+
+```
+//Adição
+int a = 50, b = 50;
+int result1 = a + b;
+Console.WriteLine(a + " + " + b + " = " + result1);
+
+//Subtração
+int c = 77, d = 21;
+int result2 = c - d;
+Console.WriteLine(c + " - " + d + " = " + result2);
+
+//Multiplicação
+int e = 5, f = 5;
+int result3 = e * f;
+Console.WriteLine(e + " * " + f + " = " + result3);
+
+//divisão
+int g = 90, h = 9;
+int result4 = g / h;
+Console.WriteLine(g + " / " + h + " = " + result4);
+
+//módulo
+int i = 36, j = 7;
+int result5 = i % j;
+Console.WriteLine("O resto da divisão de "+i+" por "+j+" é "+result5);
+```
+<h2>Ordem das expressões</h2>
+
+A linguagem C# obedece às mesmas regras utilizadas na matemática em que um conjunto de operações de multiplicação e divisão serão realizadas antes das operações de soma e subtração. A ordem pode ser controlada com uso de parênteses executando primeiramente o que esta nos mais internos até os mais externos, veja no trecho a seguir:
+```
+//ordem de execução
+int a = 5, b = 10, c = 15;
+int result1 = (a + b * c);
+Console.WriteLine("("+a+" + "+b+" * "+c+") = "+result1);
+
+//utilizando parênteses
+int result2 = ((a + b) * c);
+Console.WriteLine("((" + a + " + " + b + ") * " + c + ") = " + result2);
+```
+
+<h2>Operadores Aritméticos de Atribuição reduzida</h2>
+
+É adotado como uma boa prática utilizar atribuições reduzidas evitando assim a repetição do nome da variável manipulada. Com isto, podemos incrementar ou decrementar de forma mais rápida e com menos código.
+
+Operador Aritmético| Descrição
+---------|------------
+(++)	| Incrementa + 1
+(--)	| Decrementa - 1
+(+=)	| Incrementa
+(-=)	| Decrementa
+(*=)	| Incrementa multiplicando
+(/=)	| Decrementa dividindo
+(%=)	| Incrementa modulando (resto da divisão)
+
+Demonstração de como utilizar estes operadores de atribuição reduzida:
+
+```
+int a = 1;
+//incrementa + 1 ao valor de a
+a++; //substitui a instrução a = a + 1 
+Console.WriteLine("A = "+a);
+
+int b = 10;
+//decrementa o -1 ao valor b
+b--; //substitui a instrução b = b - 1
+Console.WriteLine("B = " + b);
+
+//incrementa qualquer valor à direita na variável à esquerda
+int c = 23;
+c += 15; //substitui a instrução c = c + 15 
+Console.WriteLine("C = " + c);
+
+//decrementa qualquer valor à direita na variável à esquerda
+int d = 100;
+d -= 25; //substitui a instrução d = d - 25 
+Console.WriteLine("D = " + d);
+
+//incrementa multiplicando qualquer valor à direita na variável à esquerda
+int e = 11;
+e *= 3; //substitui a instrução e = e * 3 
+Console.WriteLine("E = " + e);
+
+//decrementa dividindo qualquer valor à direita na variável à esquerda
+decimal f = 11;
+f /= 3; //substitui a instrução f = f / 3 
+Console.WriteLine("F = " + f.ToString("N2"));
+
+//decrementa com a operação de módulo de qualquer valor à direita na variável à esquerda
+decimal g = 11;
+g %= 3; //substitui a instrução g = g % 3 
+Console.WriteLine("G = " + g.ToString("N2"));x
 ```
