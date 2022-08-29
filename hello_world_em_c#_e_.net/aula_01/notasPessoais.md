@@ -42,3 +42,9 @@ Existem vários modelos disponíveis para utilizar com o comando new e criar um 
 
 `dotnet new xunit`
 
+importar o FluentAssertions para melhor descrição dos testes:
+`dotnet add package FluentAssertions --version 6.5.1`
+
+Obs:  Deve-se adicionar a referência para o projeto original com dotnet add reference ../variable/variable.csproj
+dotnet add reference ../variable/<nomedoprojeto>.csproj
+
