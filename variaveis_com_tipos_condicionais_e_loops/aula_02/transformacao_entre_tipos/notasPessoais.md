@@ -1,5 +1,7 @@
 <h2>Transformação entre tipos</h2>
 
+Obs: Os exemplos estão sendo executados no arquivo cast-implicito-e-explicito.
+
 C# é uma linguagem tipada em tempo de compilação, ou seja, as variáveis possuem tipos específicos logo no momento em que o código é compilado, possuindo assim suas próprias propriedades estáticas.
 
 Entretanto, muitas vezes, em um algoritmo precisamos realizar operações entre variáveis de tipos diferentes. Por exemplo:
