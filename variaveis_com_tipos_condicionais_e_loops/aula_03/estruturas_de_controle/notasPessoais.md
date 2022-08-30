@@ -184,3 +184,36 @@ Operador	Descrição	Exemplo	Resultado
 &&	AND/E	a > b && b < 4	Verdade se todas as expressões lógicas forem avaliadas como verdadeiras
 ||	OR/Ou	a > b || b < 4	Verdade se pelo menos uma expressão lógica for avaliada como verdadeira
 !	NOT/Não	!(a > b)	É uma expressão de negação, sendo assim, inverterá o valor da expressão
+
+---
+
+Para não esquecer mais 🧠
+
+* Estruturas de controle
+
+Permitem alterar a ordem de execução dos blocos de instruções.
+
+* Fluxo de controle
+
+Ordem em que os blocos de instruções são executados.
+
+* Como utilizar if, if/else e if/else aninhados
+
+Estrutura de controle que executa bloco de instruções conforme a avaliação de uma instrução.
+
+* Como utilizar switch/case
+
+Estrutura de controle que permite avaliar valores para determinada variável.
+
+* Quais são os operadores de comparação de C#
+
+, >=, <, <=, == e !=
+
+* Quais são os operadores lógicos de C#
+
+&&, || e !
+
+* Como testar as funções utilizando xUnit + FluentAssertions
+
+Bibliotecas .NET para trabalhar com testes.
+
