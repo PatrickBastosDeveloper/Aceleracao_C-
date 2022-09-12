@@ -1,18 +1,21 @@
 ﻿using Agenamespace;
 
-public class Program
+namespace CalculateAge
 {
-  public static void Main()
+  class Program
   {
-    int age = AgeCalculator.CalculateAgeByYear(1987);
-    bool result = AgeCalculator.ValidateComingOfAge(age);
-    if (!result)
+    public static void Main()
     {
-      Console.WriteLine("Você não tem idade para entrar.");
-    }
-    else
-    {
-      Console.WriteLine("Você pode entrar.");
+      int age = AgeCalculator.CalculateAgeByYear(1987);
+      bool result = AgeCalculator.ValidateComingOfAge(age);
+      if (!result)
+      {
+        Console.WriteLine("Você não tem idade para entrar.");
+      }
+      else
+      {
+        Console.WriteLine("Você pode entrar.");
+      }
     }
   }
 }
